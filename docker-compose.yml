@@ -1,0 +1,15 @@
+# for development purpose only
+version: '3'
+services:
+  mysql:
+    container_name: goodies_mysql
+    image: mysql
+    environment:
+      - MYSQL_ROOT_PASSWORD=${MYSQL_ROOT_PASSWORD}
+      - MYSQL_DATABASE=goodies
+    volumes:
+      - mysqldata:/var/lib/mysql
+    ports:
+      - ${MYSQL_MASTER_PORT}:3306
+volumes:
+  mysqldata:
