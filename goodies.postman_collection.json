@@ -31,7 +31,253 @@
 					]
 				}
 			},
-			"response": []
+			"response": [
+				{
+					"name": "Title missing",
+					"originalRequest": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n    \"title\":\"Test Barang Baru\",\n    \"description\":\"telah jelas\",\n    \"category\":\"barang\",\n    \"weight\":10.55,\n    \"price\": 200000.00\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "localhost:8080/products",
+							"host": [
+								"localhost"
+							],
+							"port": "8080",
+							"path": [
+								"products"
+							]
+						}
+					},
+					"status": "Bad Request",
+					"code": 400,
+					"_postman_previewlanguage": "json",
+					"header": [
+						{
+							"key": "Content-Type",
+							"value": "application/json"
+						},
+						{
+							"key": "Content-Type",
+							"value": "application/json"
+						},
+						{
+							"key": "Date",
+							"value": "Thu, 23 Nov 2023 16:19:26 GMT"
+						},
+						{
+							"key": "Content-Length",
+							"value": "39"
+						}
+					],
+					"cookie": [],
+					"body": "{\n    \"message\": \"product's title required\"\n}"
+				},
+				{
+					"name": "Sku missing",
+					"originalRequest": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n    \"title\":\"Test Barang Baru\",\n    \"description\":\"telah jelas\",\n    \"category\":\"barang\",\n    \"weight\":10.55,\n    \"price\": 200000.00\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "localhost:8080/products",
+							"host": [
+								"localhost"
+							],
+							"port": "8080",
+							"path": [
+								"products"
+							]
+						}
+					},
+					"status": "Bad Request",
+					"code": 400,
+					"_postman_previewlanguage": "json",
+					"header": [
+						{
+							"key": "Content-Type",
+							"value": "application/json"
+						},
+						{
+							"key": "Content-Type",
+							"value": "application/json"
+						},
+						{
+							"key": "Date",
+							"value": "Thu, 23 Nov 2023 16:19:48 GMT"
+						},
+						{
+							"key": "Content-Length",
+							"value": "37"
+						}
+					],
+					"cookie": [],
+					"body": "{\n    \"message\": \"product's sku required\"\n}"
+				},
+				{
+					"name": "Price missing",
+					"originalRequest": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n    \"title\":\"Test Barang Baru\",\n    \"sku\":\"BRG03\",\n    \"description\":\"telah jelas\",\n    \"category\":\"barang\",\n    \"weight\":10.55\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "localhost:8080/products",
+							"host": [
+								"localhost"
+							],
+							"port": "8080",
+							"path": [
+								"products"
+							]
+						}
+					},
+					"status": "Bad Request",
+					"code": 400,
+					"_postman_previewlanguage": "json",
+					"header": [
+						{
+							"key": "Content-Type",
+							"value": "application/json"
+						},
+						{
+							"key": "Content-Type",
+							"value": "application/json"
+						},
+						{
+							"key": "Date",
+							"value": "Thu, 23 Nov 2023 16:20:09 GMT"
+						},
+						{
+							"key": "Content-Length",
+							"value": "39"
+						}
+					],
+					"cookie": [],
+					"body": "{\n    \"message\": \"product's price required\"\n}"
+				},
+				{
+					"name": "SKU conflict",
+					"originalRequest": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n    \"title\":\"Test Barang Baru\",\n    \"sku\":\"BRG03\",\n    \"description\":\"telah jelas\",\n    \"category\":\"barang\",\n    \"weight\":10.55,\n    \"price\": 200000.00\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "localhost:8080/products",
+							"host": [
+								"localhost"
+							],
+							"port": "8080",
+							"path": [
+								"products"
+							]
+						}
+					},
+					"status": "Unprocessable Entity",
+					"code": 422,
+					"_postman_previewlanguage": "json",
+					"header": [
+						{
+							"key": "Content-Type",
+							"value": "application/json"
+						},
+						{
+							"key": "Content-Type",
+							"value": "application/json"
+						},
+						{
+							"key": "Date",
+							"value": "Thu, 23 Nov 2023 16:20:34 GMT"
+						},
+						{
+							"key": "Content-Length",
+							"value": "33"
+						}
+					],
+					"cookie": [],
+					"body": "{\n    \"message\": \"sku must be unique\"\n}"
+				},
+				{
+					"name": "Success",
+					"originalRequest": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n    \"title\":\"Test Barang Baru\",\n    \"sku\":\"BRG09\",\n    \"description\":\"telah jelas\",\n    \"category\":\"barang\",\n    \"weight\":10.55,\n    \"price\": 200000.00\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "localhost:8080/products",
+							"host": [
+								"localhost"
+							],
+							"port": "8080",
+							"path": [
+								"products"
+							]
+						}
+					},
+					"status": "Created",
+					"code": 201,
+					"_postman_previewlanguage": "json",
+					"header": [
+						{
+							"key": "Content-Type",
+							"value": "application/json"
+						},
+						{
+							"key": "Content-Type",
+							"value": "application/json"
+						},
+						{
+							"key": "Date",
+							"value": "Thu, 23 Nov 2023 16:21:28 GMT"
+						},
+						{
+							"key": "Content-Length",
+							"value": "192"
+						}
+					],
+					"cookie": [],
+					"body": "{\n    \"data\": {\n        \"id\": 13,\n        \"title\": \"Test Barang Baru\",\n        \"sku\": \"BRG09\",\n        \"description\": \"telah jelas\",\n        \"category\": \"barang\",\n        \"weight\": 10.55,\n        \"price\": 200000,\n        \"created_at\": \"0001-01-01T00:00:00Z\",\n        \"updated_at\": null\n    }\n}"
+				}
+			]
 		},
 		{
 			"name": "Update product",
@@ -59,7 +305,108 @@
 					]
 				}
 			},
-			"response": []
+			"response": [
+				{
+					"name": "Product not found",
+					"originalRequest": {
+						"method": "PUT",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n    \"title\":\"Test Barang Pertama\",\n    \"sku\":\"BRG01\",\n    \"description\":\"telah jelas\",\n    \"category\":\"barang\",\n    \"weight\":10.55,\n    \"price\": 20000.00\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "localhost:8080/products/{{productID}}",
+							"host": [
+								"localhost"
+							],
+							"port": "8080",
+							"path": [
+								"products",
+								"{{productID}}"
+							]
+						}
+					},
+					"status": "Unprocessable Entity",
+					"code": 422,
+					"_postman_previewlanguage": "json",
+					"header": [
+						{
+							"key": "Content-Type",
+							"value": "application/json"
+						},
+						{
+							"key": "Content-Type",
+							"value": "application/json"
+						},
+						{
+							"key": "Date",
+							"value": "Thu, 23 Nov 2023 16:18:53 GMT"
+						},
+						{
+							"key": "Content-Length",
+							"value": "31"
+						}
+					],
+					"cookie": [],
+					"body": "{\n    \"message\": \"no rows affected\"\n}"
+				},
+				{
+					"name": "Success",
+					"originalRequest": {
+						"method": "PUT",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n    \"title\":\"Test Barang Update\",\n    \"sku\":\"BRG21\",\n    \"description\":\"barang baru\",\n    \"category\":\"digital\",\n    \"weight\":10.55,\n    \"price\": 20000.00\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "localhost:8080/products/{{productID}}",
+							"host": [
+								"localhost"
+							],
+							"port": "8080",
+							"path": [
+								"products",
+								"{{productID}}"
+							]
+						}
+					},
+					"status": "OK",
+					"code": 200,
+					"_postman_previewlanguage": "json",
+					"header": [
+						{
+							"key": "Content-Type",
+							"value": "application/json"
+						},
+						{
+							"key": "Content-Type",
+							"value": "application/json"
+						},
+						{
+							"key": "Date",
+							"value": "Thu, 23 Nov 2023 16:25:58 GMT"
+						},
+						{
+							"key": "Content-Length",
+							"value": "193"
+						}
+					],
+					"cookie": [],
+					"body": "{\n    \"data\": {\n        \"id\": 9,\n        \"title\": \"Test Barang Update\",\n        \"sku\": \"BRG21\",\n        \"description\": \"barang baru\",\n        \"category\": \"digital\",\n        \"weight\": 10.55,\n        \"price\": 20000,\n        \"created_at\": \"0001-01-01T00:00:00Z\",\n        \"updated_at\": null\n    }\n}"
+				}
+			]
 		},
 		{
 			"name": "Submit product review",
@@ -88,7 +435,212 @@
 					]
 				}
 			},
-			"response": []
+			"response": [
+				{
+					"name": "Rating missing",
+					"originalRequest": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n    \"comment\":\"barang jelek\"\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "localhost:8080/products/{{productID}}/reviews",
+							"host": [
+								"localhost"
+							],
+							"port": "8080",
+							"path": [
+								"products",
+								"{{productID}}",
+								"reviews"
+							]
+						}
+					},
+					"status": "Bad Request",
+					"code": 400,
+					"_postman_previewlanguage": "json",
+					"header": [
+						{
+							"key": "Content-Type",
+							"value": "application/json"
+						},
+						{
+							"key": "Content-Type",
+							"value": "application/json"
+						},
+						{
+							"key": "Date",
+							"value": "Thu, 23 Nov 2023 16:17:43 GMT"
+						},
+						{
+							"key": "Content-Length",
+							"value": "40"
+						}
+					],
+					"cookie": [],
+					"body": "{\n    \"message\": \"product's rating required\"\n}"
+				},
+				{
+					"name": "Product not found",
+					"originalRequest": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n    \"comment\":\"barang jelek\",\n    \"rating\": 1\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "localhost:8080/products/{{productID}}/reviews",
+							"host": [
+								"localhost"
+							],
+							"port": "8080",
+							"path": [
+								"products",
+								"{{productID}}",
+								"reviews"
+							]
+						}
+					},
+					"status": "Not Found",
+					"code": 404,
+					"_postman_previewlanguage": "json",
+					"header": [
+						{
+							"key": "Content-Type",
+							"value": "application/json"
+						},
+						{
+							"key": "Content-Type",
+							"value": "application/json"
+						},
+						{
+							"key": "Date",
+							"value": "Thu, 23 Nov 2023 16:18:19 GMT"
+						},
+						{
+							"key": "Content-Length",
+							"value": "31"
+						}
+					],
+					"cookie": [],
+					"body": "{\n    \"message\": \"record not found\"\n}"
+				},
+				{
+					"name": "Rating invalid",
+					"originalRequest": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n    \"comment\":\"biasa aja\",\n    \"rating\": 3.1\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "localhost:8080/products/{{productID}}/reviews",
+							"host": [
+								"localhost"
+							],
+							"port": "8080",
+							"path": [
+								"products",
+								"{{productID}}",
+								"reviews"
+							]
+						}
+					},
+					"status": "Bad Request",
+					"code": 400,
+					"_postman_previewlanguage": "json",
+					"header": [
+						{
+							"key": "Content-Type",
+							"value": "application/json"
+						},
+						{
+							"key": "Content-Type",
+							"value": "application/json"
+						},
+						{
+							"key": "Date",
+							"value": "Thu, 23 Nov 2023 16:27:00 GMT"
+						},
+						{
+							"key": "Content-Length",
+							"value": "35"
+						}
+					],
+					"cookie": [],
+					"body": "{\n    \"message\": \"invalid input format\"\n}"
+				},
+				{
+					"name": "Success",
+					"originalRequest": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n    \"comment\":\"biasa aja\",\n    \"rating\": 3\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "localhost:8080/products/{{productID}}/reviews",
+							"host": [
+								"localhost"
+							],
+							"port": "8080",
+							"path": [
+								"products",
+								"{{productID}}",
+								"reviews"
+							]
+						}
+					},
+					"status": "Created",
+					"code": 201,
+					"_postman_previewlanguage": "json",
+					"header": [
+						{
+							"key": "Content-Type",
+							"value": "application/json"
+						},
+						{
+							"key": "Content-Type",
+							"value": "application/json"
+						},
+						{
+							"key": "Date",
+							"value": "Thu, 23 Nov 2023 16:27:19 GMT"
+						},
+						{
+							"key": "Content-Length",
+							"value": "39"
+						}
+					],
+					"cookie": [],
+					"body": "{\n    \"message\": \"product review submitted\"\n}"
+				}
+			]
 		},
 		{
 			"name": "Upload product image",
@@ -123,7 +675,180 @@
 					]
 				}
 			},
-			"response": []
+			"response": [
+				{
+					"name": "Missing image",
+					"originalRequest": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "formdata",
+							"formdata": [
+								{
+									"key": "image",
+									"type": "file",
+									"src": "/Users/rakhmatullahyogasutrisna/Downloads/IMG_3027.JPG",
+									"disabled": true
+								},
+								{
+									"key": "description",
+									"value": "cool",
+									"type": "text"
+								}
+							]
+						},
+						"url": {
+							"raw": "localhost:8080/products/{{productID}}/images",
+							"host": [
+								"localhost"
+							],
+							"port": "8080",
+							"path": [
+								"products",
+								"{{productID}}",
+								"images"
+							]
+						}
+					},
+					"status": "Bad Request",
+					"code": 400,
+					"_postman_previewlanguage": "json",
+					"header": [
+						{
+							"key": "Content-Type",
+							"value": "application/json"
+						},
+						{
+							"key": "Content-Type",
+							"value": "application/json"
+						},
+						{
+							"key": "Date",
+							"value": "Thu, 23 Nov 2023 16:16:50 GMT"
+						},
+						{
+							"key": "Content-Length",
+							"value": "35"
+						}
+					],
+					"cookie": [],
+					"body": "{\n    \"message\": \"invalid input format\"\n}"
+				},
+				{
+					"name": "Product not found",
+					"originalRequest": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "formdata",
+							"formdata": [
+								{
+									"key": "image",
+									"type": "file",
+									"src": "/Users/rakhmatullahyogasutrisna/Downloads/IMG_3027.JPG"
+								},
+								{
+									"key": "description",
+									"value": "cool",
+									"type": "text"
+								}
+							]
+						},
+						"url": {
+							"raw": "localhost:8080/products/{{productID}}/images",
+							"host": [
+								"localhost"
+							],
+							"port": "8080",
+							"path": [
+								"products",
+								"{{productID}}",
+								"images"
+							]
+						}
+					},
+					"status": "Not Found",
+					"code": 404,
+					"_postman_previewlanguage": "json",
+					"header": [
+						{
+							"key": "Content-Type",
+							"value": "application/json"
+						},
+						{
+							"key": "Content-Type",
+							"value": "application/json"
+						},
+						{
+							"key": "Date",
+							"value": "Thu, 23 Nov 2023 16:17:05 GMT"
+						},
+						{
+							"key": "Content-Length",
+							"value": "31"
+						}
+					],
+					"cookie": [],
+					"body": "{\n    \"message\": \"record not found\"\n}"
+				},
+				{
+					"name": "Success",
+					"originalRequest": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "formdata",
+							"formdata": [
+								{
+									"key": "image",
+									"type": "file",
+									"src": "/Users/rakhmatullahyogasutrisna/Downloads/IMG_3027.JPG"
+								},
+								{
+									"key": "description",
+									"value": "tampak depan",
+									"type": "text"
+								}
+							]
+						},
+						"url": {
+							"raw": "localhost:8080/products/{{productID}}/images",
+							"host": [
+								"localhost"
+							],
+							"port": "8080",
+							"path": [
+								"products",
+								"{{productID}}",
+								"images"
+							]
+						}
+					},
+					"status": "Created",
+					"code": 201,
+					"_postman_previewlanguage": "json",
+					"header": [
+						{
+							"key": "Content-Type",
+							"value": "application/json"
+						},
+						{
+							"key": "Content-Type",
+							"value": "application/json"
+						},
+						{
+							"key": "Date",
+							"value": "Thu, 23 Nov 2023 16:28:01 GMT"
+						},
+						{
+							"key": "Content-Length",
+							"value": "38"
+						}
+					],
+					"cookie": [],
+					"body": "{\n    \"message\": \"product image submitted\"\n}"
+				}
+			]
 		},
 		{
 			"name": "Get product detail",
@@ -142,7 +867,90 @@
 					]
 				}
 			},
-			"response": []
+			"response": [
+				{
+					"name": "Success",
+					"originalRequest": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "localhost:8080/products/{{productID}}",
+							"host": [
+								"localhost"
+							],
+							"port": "8080",
+							"path": [
+								"products",
+								"{{productID}}"
+							]
+						}
+					},
+					"status": "OK",
+					"code": 200,
+					"_postman_previewlanguage": "json",
+					"header": [
+						{
+							"key": "Content-Type",
+							"value": "application/json"
+						},
+						{
+							"key": "Content-Type",
+							"value": "application/json"
+						},
+						{
+							"key": "Date",
+							"value": "Thu, 23 Nov 2023 14:57:40 GMT"
+						},
+						{
+							"key": "Content-Length",
+							"value": "505"
+						}
+					],
+					"cookie": [],
+					"body": "{\n    \"data\": {\n        \"id\": 1,\n        \"title\": \"Test Barang Pertama\",\n        \"sku\": \"BRG00\",\n        \"description\": \"telah jelas\",\n        \"category\": \"barang\",\n        \"weight\": 10.55,\n        \"price\": 20000,\n        \"created_at\": \"2023-11-23T05:24:43Z\",\n        \"updated_at\": \"2023-11-23T07:29:44Z\",\n        \"images\": [\n            {\n                \"id\": 2,\n                \"product_id\": 1,\n                \"image_url\": \"http://localhost:8080/static/img/upload-1577741297.JPG\",\n                \"image_description\": \"barang ini dijamin bagus\"\n            }\n        ],\n        \"reviews\": [\n            {\n                \"id\": 1,\n                \"product_id\": 1,\n                \"rating\": 5,\n                \"comment\": \"barang bagus\"\n            },\n            {\n                \"id\": 2,\n                \"product_id\": 1,\n                \"rating\": 1,\n                \"comment\": \"barang jelek\"\n            }\n        ],\n        \"rating\": 3\n    }\n}"
+				},
+				{
+					"name": "Not Found",
+					"originalRequest": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "localhost:8080/products/{{productID}}",
+							"host": [
+								"localhost"
+							],
+							"port": "8080",
+							"path": [
+								"products",
+								"{{productID}}"
+							]
+						}
+					},
+					"status": "Not Found",
+					"code": 404,
+					"_postman_previewlanguage": "json",
+					"header": [
+						{
+							"key": "Content-Type",
+							"value": "application/json"
+						},
+						{
+							"key": "Content-Type",
+							"value": "application/json"
+						},
+						{
+							"key": "Date",
+							"value": "Thu, 23 Nov 2023 14:59:00 GMT"
+						},
+						{
+							"key": "Content-Length",
+							"value": "31"
+						}
+					],
+					"cookie": [],
+					"body": "{\n    \"message\": \"record not found\"\n}"
+				}
+			]
 		},
 		{
 			"name": "Get list of products",
@@ -197,7 +1005,155 @@
 					]
 				}
 			},
-			"response": []
+			"response": [
+				{
+					"name": "Success",
+					"originalRequest": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "localhost:8080/products",
+							"host": [
+								"localhost"
+							],
+							"port": "8080",
+							"path": [
+								"products"
+							],
+							"query": [
+								{
+									"key": "sku",
+									"value": "BRG00",
+									"disabled": true
+								},
+								{
+									"key": "title",
+									"value": "Test Barang Pertama",
+									"disabled": true
+								},
+								{
+									"key": "category",
+									"value": "barang",
+									"disabled": true
+								},
+								{
+									"key": "sort_by",
+									"value": "rating",
+									"disabled": true
+								},
+								{
+									"key": "sort",
+									"value": "asc",
+									"disabled": true
+								},
+								{
+									"key": "offset",
+									"value": "1",
+									"disabled": true
+								},
+								{
+									"key": "limit",
+									"value": "1",
+									"disabled": true
+								}
+							]
+						}
+					},
+					"status": "OK",
+					"code": 200,
+					"_postman_previewlanguage": "json",
+					"header": [
+						{
+							"key": "Content-Type",
+							"value": "application/json"
+						},
+						{
+							"key": "Content-Type",
+							"value": "application/json"
+						},
+						{
+							"key": "Date",
+							"value": "Thu, 23 Nov 2023 16:15:32 GMT"
+						},
+						{
+							"key": "Content-Length",
+							"value": "612"
+						}
+					],
+					"cookie": [],
+					"body": "{\n    \"data\": [\n        {\n            \"id\": 10,\n            \"title\": \"Test Barang Baru\",\n            \"sku\": \"BRG03\",\n            \"description\": \"telah jelas\",\n            \"category\": \"barang\",\n            \"weight\": 10.55,\n            \"price\": 200000,\n            \"created_at\": \"2023-11-23T07:11:32Z\",\n            \"updated_at\": null,\n            \"rating\": 0\n        },\n        {\n            \"id\": 9,\n            \"title\": \"Test Barang Kedua\",\n            \"sku\": \"BRG01\",\n            \"description\": \"telah jelas\",\n            \"category\": \"barang\",\n            \"weight\": 15.5,\n            \"price\": 20000,\n            \"created_at\": \"2023-11-23T05:48:25Z\",\n            \"updated_at\": null,\n            \"rating\": 4.3\n        },\n        {\n            \"id\": 1,\n            \"title\": \"Test Barang Pertama\",\n            \"sku\": \"BRG00\",\n            \"description\": \"telah jelas\",\n            \"category\": \"barang\",\n            \"weight\": 10.55,\n            \"price\": 20000,\n            \"created_at\": \"2023-11-23T05:24:43Z\",\n            \"updated_at\": \"2023-11-23T07:29:44Z\",\n            \"rating\": 3\n        }\n    ]\n}"
+				},
+				{
+					"name": "No data",
+					"originalRequest": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "localhost:8080/products?sku=BRG00&title=Test Barang Pertama&category=barang&sort_by=rating&sort=asc&offset=1&limit=1",
+							"host": [
+								"localhost"
+							],
+							"port": "8080",
+							"path": [
+								"products"
+							],
+							"query": [
+								{
+									"key": "sku",
+									"value": "BRG00"
+								},
+								{
+									"key": "title",
+									"value": "Test Barang Pertama"
+								},
+								{
+									"key": "category",
+									"value": "barang"
+								},
+								{
+									"key": "sort_by",
+									"value": "rating"
+								},
+								{
+									"key": "sort",
+									"value": "asc"
+								},
+								{
+									"key": "offset",
+									"value": "1"
+								},
+								{
+									"key": "limit",
+									"value": "1"
+								}
+							]
+						}
+					},
+					"status": "OK",
+					"code": 200,
+					"_postman_previewlanguage": "json",
+					"header": [
+						{
+							"key": "Content-Type",
+							"value": "application/json"
+						},
+						{
+							"key": "Content-Type",
+							"value": "application/json"
+						},
+						{
+							"key": "Date",
+							"value": "Thu, 23 Nov 2023 16:15:57 GMT"
+						},
+						{
+							"key": "Content-Length",
+							"value": "14"
+						}
+					],
+					"cookie": [],
+					"body": "{\n    \"data\": null\n}"
+				}
+			]
 		}
 	],
 	"event": [
