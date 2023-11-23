@@ -59,7 +59,7 @@ func getProducts(ctx context.Context, searchQuery ProductSearchQuery) (products 
 	}
 
 	query := `SELECT p.*, COALESCE(pr.rating,0) AS rating FROM products p LEFT JOIN ` +
-		`(SELECT product_id, COALESCE(ROUND(SUM(rating)/COUNT(rating),1),0) AS rating FROM product_reviews GROUP BY product_id) AS pr ` +
+		`(SELECT product_id, ROUND(SUM(rating)/COUNT(rating),1) AS rating FROM product_reviews GROUP BY product_id) AS pr ` +
 		`ON pr.product_id = p.id ` + whereClause +
 		` ORDER BY ` + string(searchQuery.SortBy) + ` ` + string(searchQuery.Sort) + ` LIMIT ? OFFSET ?`
 	whereParams = append(whereParams, searchQuery.Limit, searchQuery.Offset)
