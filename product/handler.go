@@ -14,6 +14,12 @@ import (
 
 var (
 	ErrParseInput = errors.New("invalid input format")
+
+	listProductsService        = listProducts
+	getProductDetailsService   = getProductDetails
+	submitProductService       = submitProduct
+	submitProductImageService  = submitProductImage
+	submitProductReviewService = submitProductReview
 )
 
 type Response struct {
@@ -85,7 +91,7 @@ func listProductsHandler(w http.ResponseWriter, r *http.Request) {
 		Offset:   offset,
 		Limit:    limit,
 	}
-	products, err := listProducts(r.Context(), searchQuery)
+	products, err := listProductsService(r.Context(), searchQuery)
 	if err != nil {
 		writeError(w, err)
 		return
@@ -103,7 +109,7 @@ func getProductHandler(w http.ResponseWriter, r *http.Request) {
 	}
 
 	productID, _ := strconv.ParseUint(productIDstr, 10, 64)
-	product, err := getProductDetails(r.Context(), productID)
+	product, err := getProductDetailsService(r.Context(), productID)
 	if err != nil {
 		writeError(w, err)
 		return
@@ -125,7 +131,7 @@ func submitProductHandler(w http.ResponseWriter, r *http.Request) {
 		return
 	}
 
-	if err := submitProduct(r.Context(), &product); err != nil {
+	if err := submitProductService(r.Context(), &product); err != nil {
 		writeError(w, err)
 		return
 	}
@@ -158,7 +164,7 @@ func submitProductImageHandler(w http.ResponseWriter, r *http.Request) {
 		File:        file,
 		Description: r.FormValue("description"),
 	}
-	if err = submitProductImage(r.Context(), imgData); err != nil {
+	if err = submitProductImageService(r.Context(), imgData); err != nil {
 		writeError(w, err)
 		return
 	}
@@ -189,7 +195,7 @@ func submitProductReviewHandler(w http.ResponseWriter, r *http.Request) {
 		return
 	}
 
-	if err := submitProductReview(r.Context(), productReview); err != nil {
+	if err := submitProductReviewService(r.Context(), productReview); err != nil {
 		writeError(w, err)
 		return
 	}
@@ -219,7 +225,7 @@ func updateProductHandler(w http.ResponseWriter, r *http.Request) {
 		return
 	}
 
-	err := submitProduct(r.Context(), &product)
+	err := submitProductService(r.Context(), &product)
 	if err != nil {
 		writeError(w, err)
 		return

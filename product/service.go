@@ -6,19 +6,30 @@ import (
 	"os"
 )
 
+var (
+	getProductsRepo          = getProducts
+	getProductRepo           = getProduct
+	getProductImagesRepo     = getProductImages
+	getProductReviewsRepo    = getProductReviews
+	saveProductRepo          = saveProduct
+	saveProductImageFileRepo = saveProductImageFile
+	saveProductImageRepo     = saveProductImage
+	saveProductReviewRepo    = saveProductReview
+)
+
 func getProductDetails(ctx context.Context, id uint64) (productDetail ProductDetail, err error) {
-	product, err := getProduct(ctx, id)
+	product, err := getProductRepo(ctx, id)
 	if err != nil {
 		return
 	}
 
-	images, err := getProductImages(ctx, id)
+	images, err := getProductImagesRepo(ctx, id)
 	if err != nil {
 		return
 	}
 	setImageUrl(&images)
 
-	reviews, err := getProductReviews(ctx, id)
+	reviews, err := getProductReviewsRepo(ctx, id)
 	if err != nil {
 		return
 	}
@@ -55,17 +66,17 @@ func calculateRatings(reviews []ProductReview) (rating float64) {
 }
 
 func submitProduct(ctx context.Context, product *Product) (err error) {
-	err = saveProduct(ctx, product)
+	err = saveProductRepo(ctx, product)
 	return
 }
 
 func submitProductImage(ctx context.Context, imgData ProductImageUpload) (err error) {
-	_, err = getProduct(ctx, imgData.ProductID)
+	_, err = getProductRepo(ctx, imgData.ProductID)
 	if err != nil {
 		return
 	}
 
-	filename, err := saveProductImageFile(imgData.File, imgData.Extension)
+	filename, err := saveProductImageFileRepo(imgData.File, imgData.Extension)
 	if err != nil {
 		return
 	}
@@ -75,21 +86,21 @@ func submitProductImage(ctx context.Context, imgData ProductImageUpload) (err er
 		ImageDescription: imgData.Description,
 		ImageUrl:         filename,
 	}
-	err = saveProductImage(ctx, &productImage)
+	err = saveProductImageRepo(ctx, &productImage)
 	return
 }
 
 func submitProductReview(ctx context.Context, productReview ProductReview) (err error) {
-	_, err = getProduct(ctx, productReview.ProductID)
+	_, err = getProductRepo(ctx, productReview.ProductID)
 	if err != nil {
 		return
 	}
 
-	err = saveProductReview(ctx, &productReview)
+	err = saveProductReviewRepo(ctx, &productReview)
 	return
 }
 
 func listProducts(ctx context.Context, searchQuery ProductSearchQuery) (products []ProductDetail, err error) {
-	products, err = getProducts(ctx, searchQuery)
+	products, err = getProductsRepo(ctx, searchQuery)
 	return
 }
